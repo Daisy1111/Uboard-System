@@ -1,0 +1,91 @@
+#activity type
+type Activity {
+    activityId: Int! #activityID
+    initializer: User! #activity initializer
+    applications: [Application!] # all the applications of this activity
+    participants: [User!] #all the participants of this activity
+    activityName: String! #activity name
+    imageUrl: String! #activity image
+    startTime: String! #activity start time
+    endTime: String! #activity end time
+    location: String! #activity location
+    description: String! #activity description
+    numOfParticipants: Int! #number of activity participants
+    funds: Int! #activity funds
+    requirements: String! #activity requirements
+}
+
+#the input when user create the activity
+input ActivityCreateInput {
+    activityName: String! #activity name
+    imageUrl: String! #activity image
+    startTime: String! #activity start time
+    endTime: String! #activity end time
+    location: String! #activity location
+    description: String! #activity description
+    numOfParticipants: Int! #number of activity participants
+    funds: Int! #activity funds
+    requirements: String! #activity requirements
+}
+
+#user
+type User {
+    userId: Int! #userID
+    initializedActivityList: [Activity!] #the activity that this user initialized
+    participatedActivityList: [Activity!] #the activity that this user participated
+    applications: [Application!] #the applications from this user
+    userName: String! #user name
+    userSchool: String! #user school
+    userGrade: String! #user grade
+    email: String! #user email
+    phoneNumber: String! #user phone number
+    password: String! #user password
+}
+
+#user register input
+input UserRegisterInput {
+    userName: String! #username
+    userSchool: String! #user school
+    userGrade: String! #user grade
+    email: String! #user email
+    phoneNumber: String! #user phone number
+    password:String! #user password
+}
+
+#application
+type Application {
+    applicationId: Int!
+    applicant: User!
+    activity: Activity!
+    comments: String!
+    applicationStatus: String!
+}
+
+#user create application input
+input ApplicationCreateInput {
+    comments: String!
+}
+
+input LoginInput {
+    email: String!
+    password: String!
+}
+
+type Query {
+    activity: [Activity!] #query all the activity
+    user: [User!] #query all the user
+    application: [Application!] #query all the applications
+    userWithUserId(userId: Int): User #query information of one user
+    activityWithActivityId(activityId: Int): Activity #query information of one activity
+    login(loginInput: LoginInput!): User!
+}
+
+type Mutation {
+    createActivity(activityCreateInput: ActivityCreateInput, initializerId: Int): Activity! #create activity
+    createApplication(applicationCreateInput: ApplicationCreateInput, applicantId: Int, activityId: Int): Application! #create application
+    registerUser(userRegisterInput: UserRegisterInput): User! # user register
+    applicationApprove(applicationId: Int): Application! #approve the application
+    applicationDeny(applicationId: Int): Application! #deny the application
+}
+
+
