@@ -27,7 +27,7 @@ The browser may warn of password compromise, but it doesn't matter.
 1. Clone this repository
 
     ```
-    git clone https://github.com/ESoapW/Uboard.git
+    git clone https://github.com/Daisy1111/Uboard-System.git
     cd Uboard/
     ```   
 
