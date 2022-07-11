@@ -1,9 +1,4 @@
 # Uboard - a web application to find partners for campus events
-IT5007 Project
-
-## Video demo
-[Video demo](https://www.dropbox.com/s/c0n8k273kqfmbaa/Uboard%20demo.mov?dl=0)
-<br/>
 
 ## Access via public IP address
 ~~54.149.15.71:3000~~ Instance has been stopped
